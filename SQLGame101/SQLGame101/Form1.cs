@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Management;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.IO.Ports;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.IO.Ports;
 
 namespace SQLGame101
 {
@@ -32,6 +26,7 @@ namespace SQLGame101
             {
                 try
                 {
+                    serialPort1.PortName = textBox1.Text;
                     serialPort1.Open();
                     label1.Text = "start read";
                     button1.Enabled = false;
@@ -42,9 +37,6 @@ namespace SQLGame101
                     MessageBox.Show(ex.Message);
                 }
             }
-
-
-
 
         }
 
@@ -87,16 +79,34 @@ namespace SQLGame101
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Caption like '%(COM%'"))
+            using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity"))
             {
                 var portnames = SerialPort.GetPortNames();
                 var ports = searcher.Get().Cast<ManagementBaseObject>().ToList().Select(p => p["Caption"].ToString());
 
                 var portList = portnames.Select(n => n + " - " + ports.FirstOrDefault(s => s.Contains(n))).ToList();
+                
+                foreach (string n in portList)
+                {
+                    listBox1.Items.Add(n);
+                }
+            }
+
+            using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Caption like '%Arduino%' AND Caption like '%(COM%' "))
+            {
+                var portnames = SerialPort.GetPortNames();
+                var ports = searcher.Get().Cast<ManagementBaseObject>().ToList().Select(p => p["Caption"].ToString());
+
+                var portList = ports.Select(n => portnames.FirstOrDefault(s => n.Contains(s))).ToList();
                 foreach (string s in portList)
                 {
-                    listBox1.Items.Add(s);
+                    if (s != null)
+                    {
+                        listBox1.Items.Add(s);
+                        textBox1.Text = s;
+                    }
                 }
+                
             }
 
         }
