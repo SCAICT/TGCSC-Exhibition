@@ -100,7 +100,7 @@ namespace SQLGame101
             this.textBox2.Font = new System.Drawing.Font("新細明體", 18F);
             this.textBox2.Location = new System.Drawing.Point(312, 46);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 36);
+            this.textBox2.Size = new System.Drawing.Size(453, 36);
             this.textBox2.TabIndex = 5;
             // 
             // label2

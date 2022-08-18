@@ -79,20 +79,32 @@ namespace SQLGame101
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity"))
+            using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Manufacturer!=NULL AND Manufacturer like 'Arduino%'"))
             {
                 var portnames = SerialPort.GetPortNames();
                 var ports = searcher.Get().Cast<ManagementBaseObject>().ToList().Select(p => p["Caption"].ToString());
-
-                var portList = portnames.Select(n => n + " - " + ports.FirstOrDefault(s => s.Contains(n))).ToList();
-                
-                foreach (string n in portList)
+                //var portList = portnames.Select(n => portnames.SingleOrDefault(s => n.Contains(s))).ToList();
+                var tmp = string.Join(",", ports.ToArray());
+                foreach (string n in portnames)
                 {
-                    listBox1.Items.Add(n);
+                    if (tmp.Contains(n))
+                    {
+                        listBox1.Items.Add(n);
+                        textBox1.Text = n;
+                    }
                 }
             }
 
-            using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Caption like '%Arduino%' AND Caption like '%(COM%' "))
+
+
+        }
+    }
+
+
+}
+
+
+/**            using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Caption like '%Arduino%'"))
             {
                 var portnames = SerialPort.GetPortNames();
                 var ports = searcher.Get().Cast<ManagementBaseObject>().ToList().Select(p => p["Caption"].ToString());
@@ -106,11 +118,6 @@ namespace SQLGame101
                         textBox1.Text = s;
                     }
                 }
-                
+
             }
-
-        }
-    }
-
-
-}
+**/
