@@ -38,13 +38,14 @@ namespace SQLGame101
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.DebugBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("新細明體", 16F);
-            this.label1.Location = new System.Drawing.Point(236, 357);
+            this.label1.Location = new System.Drawing.Point(236, 375);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 22);
             this.label1.TabIndex = 0;
@@ -112,11 +113,22 @@ namespace SQLGame101
             this.label2.TabIndex = 6;
             this.label2.Text = "label2";
             // 
+            // DebugBtn
+            // 
+            this.DebugBtn.Location = new System.Drawing.Point(690, 409);
+            this.DebugBtn.Name = "DebugBtn";
+            this.DebugBtn.Size = new System.Drawing.Size(75, 23);
+            this.DebugBtn.TabIndex = 7;
+            this.DebugBtn.Text = "Debug Mode";
+            this.DebugBtn.UseVisualStyleBackColor = true;
+            this.DebugBtn.Click += new System.EventHandler(this.DebugBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.DebugBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button2);
@@ -142,6 +154,7 @@ namespace SQLGame101
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button DebugBtn;
     }
 }
 

@@ -98,6 +98,13 @@ namespace SQLGame101
 
 
         }
+
+        private void DebugBtn_Click(object sender, EventArgs e)
+        {
+            var form = new Form2();
+            form.Show();
+            
+        }
     }
 
 
