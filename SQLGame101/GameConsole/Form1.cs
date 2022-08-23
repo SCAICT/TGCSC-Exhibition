@@ -157,7 +157,7 @@ namespace GameConsole
                     label.Name = $"label{i}";
                     label.Size = new System.Drawing.Size(130, 40);
                     label.TabIndex = 6;
-                    if(data != null)
+                    if(data!=null)
                     {
                         label.Text = $"{detectSyntax(Convert.ToInt32(data))}";
                         sqlQuerySum[i] = detectSyntax(Convert.ToInt32(data));
@@ -190,7 +190,7 @@ namespace GameConsole
             string tmp = "";
             for(int i = 0; i < 8; i++)
             {
-                tmp += sqlQuerySum[i];
+                tmp += $"{sqlQuerySum[i]} ";
             }
             textBox1.Text = tmp;
         }
