@@ -1,0 +1,10 @@
+C:\Users\edstudiotw\Desktop\Project\TGCSC-Exhibition\SQLGame101\GameConsole\bin\Debug\GameConsole.exe.config
+C:\Users\edstudiotw\Desktop\Project\TGCSC-Exhibition\SQLGame101\GameConsole\bin\Debug\GameConsole.exe
+C:\Users\edstudiotw\Desktop\Project\TGCSC-Exhibition\SQLGame101\GameConsole\bin\Debug\GameConsole.pdb
+C:\Users\edstudiotw\Desktop\Project\TGCSC-Exhibition\SQLGame101\GameConsole\obj\Debug\GameConsole.csproj.AssemblyReference.cache
+C:\Users\edstudiotw\Desktop\Project\TGCSC-Exhibition\SQLGame101\GameConsole\obj\Debug\GameConsole.Form1.resources
+C:\Users\edstudiotw\Desktop\Project\TGCSC-Exhibition\SQLGame101\GameConsole\obj\Debug\GameConsole.Properties.Resources.resources
+C:\Users\edstudiotw\Desktop\Project\TGCSC-Exhibition\SQLGame101\GameConsole\obj\Debug\GameConsole.csproj.GenerateResource.cache
+C:\Users\edstudiotw\Desktop\Project\TGCSC-Exhibition\SQLGame101\GameConsole\obj\Debug\GameConsole.csproj.CoreCompileInputs.cache
+C:\Users\edstudiotw\Desktop\Project\TGCSC-Exhibition\SQLGame101\GameConsole\obj\Debug\GameConsole.exe
+C:\Users\edstudiotw\Desktop\Project\TGCSC-Exhibition\SQLGame101\GameConsole\obj\Debug\GameConsole.pdb

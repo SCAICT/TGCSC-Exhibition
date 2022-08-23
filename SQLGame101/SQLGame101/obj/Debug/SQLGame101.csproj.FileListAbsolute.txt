@@ -17,3 +17,4 @@ C:\Users\edtsai\Desktop\TGCSC-Exhibition\SQLGame101\SQLGame101\obj\Debug\SQLGame
 C:\Users\edtsai\Desktop\TGCSC-Exhibition\SQLGame101\SQLGame101\obj\Debug\SQLGame101.exe
 C:\Users\edtsai\Desktop\TGCSC-Exhibition\SQLGame101\SQLGame101\obj\Debug\SQLGame101.pdb
 C:\Users\edtsai\Desktop\TGCSC-Exhibition\SQLGame101\SQLGame101\obj\Debug\SQLGame101.Form2.resources
+C:\Users\edstudiotw\Desktop\Project\TGCSC-Exhibition\SQLGame101\SQLGame101\obj\Debug\SQLGame101.Form2.resources

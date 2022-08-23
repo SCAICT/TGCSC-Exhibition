@@ -40,11 +40,11 @@ namespace SQLGame101
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.TestLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.roundButton1 = new SQLGame101.RoundButton();
             this.roundButton4 = new SQLGame101.RoundButton();
             this.roundButton2 = new SQLGame101.RoundButton();
             this.roundButton3 = new SQLGame101.RoundButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.roundButton1 = new SQLGame101.RoundButton();
             this.ConnectionGroup.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -142,24 +142,6 @@ namespace SQLGame101
             this.panel1.Size = new System.Drawing.Size(54, 18);
             this.panel1.TabIndex = 6;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(341, 201);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // roundButton1
-            // 
-            this.roundButton1.Location = new System.Drawing.Point(584, 335);
-            this.roundButton1.Name = "roundButton1";
-            this.roundButton1.Size = new System.Drawing.Size(24, 23);
-            this.roundButton1.TabIndex = 8;
-            this.roundButton1.Text = "roundButton1";
-            this.roundButton1.UseVisualStyleBackColor = true;
-            // 
             // roundButton4
             // 
             this.roundButton4.BackColor = System.Drawing.Color.Red;
@@ -196,6 +178,24 @@ namespace SQLGame101
             this.roundButton3.TabIndex = 10;
             this.roundButton3.UseVisualStyleBackColor = false;
             this.roundButton3.Click += new System.EventHandler(this.roundButton3_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(340, 409);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // roundButton1
+            // 
+            this.roundButton1.Location = new System.Drawing.Point(421, 409);
+            this.roundButton1.Name = "roundButton1";
+            this.roundButton1.Size = new System.Drawing.Size(24, 23);
+            this.roundButton1.TabIndex = 8;
+            this.roundButton1.Text = "roundButton1";
+            this.roundButton1.UseVisualStyleBackColor = true;
             // 
             // Form2
             // 

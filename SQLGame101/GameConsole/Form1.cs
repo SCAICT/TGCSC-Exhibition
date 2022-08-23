@@ -5,30 +5,34 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
+using System.Threading.Tasks;
 using System.Management;
+using System.Windows.Forms;
 using System.IO.Ports;
 
-namespace SQLGame101
+
+namespace GameConsole
 {
     delegate void serialCallback(string val);
-    public partial class Form2 : Form
+    public partial class Form1 : Form
     {
-        bool kkr;
-        public Form2()
+        string[] sqlQuerySum = new string[8];
+        public Form1()
         {
             InitializeComponent();
         }
 
-        private void BackBtn_Click(object sender, EventArgs e)
+
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var form = new Form1();
-            form.Show();
-            this.Hide();
+            serialPort1.PortName = comboBox1.Text;
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void comboBox1_Click(object sender, EventArgs e)
         {
+            comboBox1.Items.Clear();
+
             using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Manufacturer!=NULL AND Manufacturer like 'Arduino%'"))
             {
                 var portnames = SerialPort.GetPortNames();
@@ -39,25 +43,25 @@ namespace SQLGame101
                 {
                     if (tmp.Contains(n))
                     {
-                        ComList.Items.Add(n);
-                        ComTb.Text = n;
+                        comboBox1.Items.Add(n);
+                                                
                     }
                 }
             }
-            kkr = false;
         }
 
-        private void StartBtn_Click(object sender, EventArgs e)
+        private void start_btn_Click(object sender, EventArgs e)
         {
             if (!serialPort1.IsOpen)
             {
                 try
                 {
-                    serialPort1.PortName = ComTb.Text;
+                    serialPort1.PortName = comboBox1.Text;
                     serialPort1.Open();
-                    StatusLabel.Text = "start read";
-                    StartBtn.Enabled = false;
-                    DisconnectBtn.Enabled = true;
+                    StatusLabel.Text = "Start read";
+                    start_btn.Enabled = false;
+                    stop_btn.Enabled = true;
+                    StatusLabel.BackColor = Color.Chartreuse;
                 }
                 catch (Exception ex)
                 {
@@ -66,28 +70,67 @@ namespace SQLGame101
             }
         }
 
-        private void DisconnectBtn_Click(object sender, EventArgs e)
+        private void stop_btn_Click(object sender, EventArgs e)
         {
             try
             {
                 if (serialPort1.IsOpen)
                 {
                     serialPort1.Close();
+                    
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            StatusLabel.Text = "stoped";
-            StartBtn.Enabled = true;
-            DisconnectBtn.Enabled = false;
+            StatusLabel.Text = "Stoped";
+            start_btn.Enabled = true;
+            stop_btn.Enabled = false;
+            StatusLabel.BackColor = Color.LightCoral;
         }
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string recvtext = serialPort1.ReadLine();
             setText(recvtext);
+        }
+        private string detectSyntax(int value)
+        {
+            if(value>=18 && value <= 29)
+            {
+                return "SELECT";
+            }
+            else if(value>=850 && value <= 975)
+            {
+                return "Users";
+            }
+            else if (value>=296 && value <= 336)
+            {
+                return "FROM";
+            }
+            else if (value>=50 && value <= 60)
+            {
+                return "WHERE";
+            }
+            else if (value>= 345 && value <= 404)
+            {
+                return "`username`";
+            }
+            else if (value>=420 && value <= 505)
+            {
+                return "=";
+            }
+            else if(value>=215 && value <= 271)
+            {
+                return "'admin'";
+            }
+            else if(value>=730 && value <= 840)
+            {
+                return "password";
+            }
+            return "";
+
         }
         private void setText(string val)
         {
@@ -100,7 +143,7 @@ namespace SQLGame101
             {
                 var dataArr = val.Split(",".ToCharArray());
                 TestLabel.Text = val;
-                for(int i = 0; i < dataArr.Length; i ++)
+                for (int i = 0; i < dataArr.Length; i++)
                 {
                     var label = new Label();
                     var data = dataArr[i];
@@ -110,13 +153,21 @@ namespace SQLGame101
                     label.BackColor = System.Drawing.Color.MediumPurple;
                     label.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
                     label.ForeColor = System.Drawing.Color.Cornsilk;
-                    label.Location = new System.Drawing.Point(312, 51 + i * 30);
+                    label.Location = new System.Drawing.Point(20 + i * 130, 100);
                     label.Name = $"label{i}";
-                    label.Size = new System.Drawing.Size(300, 40);
+                    label.Size = new System.Drawing.Size(130, 40);
                     label.TabIndex = 6;
-                    label.Text = $"Data{i} : {data}";
+                    if(data != null)
+                    {
+                        label.Text = $"{detectSyntax(Convert.ToInt32(data))}";
+                        sqlQuerySum[i] = detectSyntax(Convert.ToInt32(data));
+                    }
+                    else
+                    {
+                        label.Text = $"{i} NaN";
+                    }
                     label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                    
+
                     var find = this.Controls.Find($"label{i}", false).FirstOrDefault();
                     if (find != null)
                     {
@@ -128,28 +179,21 @@ namespace SQLGame101
             }
         }
 
-        private void roundButton4_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            Application.Exit();
+           
+
         }
 
-        private void roundButton2_Click(object sender, EventArgs e)
+        private void make_btn_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void roundButton3_Click(object sender, EventArgs e)
-        {
-            if(kkr == false)
+            string tmp = "";
+            for(int i = 0; i < 8; i++)
             {
-                this.WindowState = FormWindowState.Maximized;
-                kkr = true;
+                tmp += sqlQuerySum[i];
             }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-                kkr = false;
-            }
+            textBox1.Text = tmp;
         }
     }
 }
+
