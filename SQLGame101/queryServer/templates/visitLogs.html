@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{% block title %} 造訪建立紀錄 {% endblock %}</h1>
+    <p>每五秒刷新一次</p>
+    <div style="width: 50%; margin: auto">
+        <div>
+            {{error | safe }}
+            {{ countPayload | safe }}
+            <p>{{ logs | join(" <hr> ") | safe }}</p>
+        </div>
+    </div>
+{% endblock %}
