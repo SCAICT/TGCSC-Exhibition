@@ -18,3 +18,13 @@ C:\Users\edtsai\Desktop\TGCSC-Exhibition\SQLGame101\SQLGame101\obj\Debug\SQLGame
 C:\Users\edtsai\Desktop\TGCSC-Exhibition\SQLGame101\SQLGame101\obj\Debug\SQLGame101.pdb
 C:\Users\edtsai\Desktop\TGCSC-Exhibition\SQLGame101\SQLGame101\obj\Debug\SQLGame101.Form2.resources
 C:\Users\edstudiotw\Desktop\Project\TGCSC-Exhibition\SQLGame101\SQLGame101\obj\Debug\SQLGame101.Form2.resources
+D:\data\TGCSC-Exhibition\SQLGame101\SQLGame101\bin\Debug\SQLGame101.exe
+D:\data\TGCSC-Exhibition\SQLGame101\SQLGame101\bin\Debug\SQLGame101.pdb
+D:\data\TGCSC-Exhibition\SQLGame101\SQLGame101\obj\Debug\SQLGame101.csproj.AssemblyReference.cache
+D:\data\TGCSC-Exhibition\SQLGame101\SQLGame101\obj\Debug\SQLGame101.Form1.resources
+D:\data\TGCSC-Exhibition\SQLGame101\SQLGame101\obj\Debug\SQLGame101.Form2.resources
+D:\data\TGCSC-Exhibition\SQLGame101\SQLGame101\obj\Debug\SQLGame101.Properties.Resources.resources
+D:\data\TGCSC-Exhibition\SQLGame101\SQLGame101\obj\Debug\SQLGame101.csproj.GenerateResource.cache
+D:\data\TGCSC-Exhibition\SQLGame101\SQLGame101\obj\Debug\SQLGame101.csproj.CoreCompileInputs.cache
+D:\data\TGCSC-Exhibition\SQLGame101\SQLGame101\obj\Debug\SQLGame101.exe
+D:\data\TGCSC-Exhibition\SQLGame101\SQLGame101\obj\Debug\SQLGame101.pdb
