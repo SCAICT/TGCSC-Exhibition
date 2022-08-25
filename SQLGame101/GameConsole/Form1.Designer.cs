@@ -48,7 +48,7 @@ namespace GameConsole
             // 
             // comboBox1
             // 
-            this.comboBox1.Font = new System.Drawing.Font("PMingLiU", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.comboBox1.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(12, 17);
             this.comboBox1.Name = "comboBox1";
@@ -83,7 +83,7 @@ namespace GameConsole
             // 
             this.StatusLabel.AutoSize = true;
             this.StatusLabel.BackColor = System.Drawing.Color.LightCoral;
-            this.StatusLabel.Font = new System.Drawing.Font("PMingLiU", 12F);
+            this.StatusLabel.Font = new System.Drawing.Font("新細明體", 12F);
             this.StatusLabel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.StatusLabel.Location = new System.Drawing.Point(25, -2);
             this.StatusLabel.Name = "StatusLabel";
@@ -113,7 +113,7 @@ namespace GameConsole
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("PMingLiU", 14F);
+            this.textBox1.Font = new System.Drawing.Font("新細明體", 14F);
             this.textBox1.Location = new System.Drawing.Point(472, 14);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(693, 30);
@@ -122,7 +122,7 @@ namespace GameConsole
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(815, 50);
+            this.dataGridView1.Location = new System.Drawing.Point(1181, 17);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(350, 485);
@@ -132,7 +132,7 @@ namespace GameConsole
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1177, 547);
+            this.ClientSize = new System.Drawing.Size(1543, 547);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.make_btn);

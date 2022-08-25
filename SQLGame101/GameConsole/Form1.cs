@@ -103,31 +103,31 @@ namespace GameConsole
             {
                 return "SELECT";
             }
-            else if(value>=850 && value <= 975)
+            else if(value>=850 && value <= 978)
             {
                 return "Users";
             }
-            else if (value>=296 && value <= 336)
+            else if (value>=296 && value <= 338)
             {
                 return "FROM";
             }
-            else if (value>=50 && value <= 60)
+            else if (value>=50 && value <= 68)
             {
                 return "WHERE";
             }
-            else if (value>= 345 && value <= 404)
+            else if (value>= 345 && value <= 408)
             {
                 return "`username`";
             }
-            else if (value>=420 && value <= 505)
+            else if (value>=420 && value <= 509)
             {
                 return "=";
             }
-            else if(value>=215 && value <= 271)
+            else if(value>=215 && value <= 279)
             {
                 return "'admin'";
             }
-            else if(value>=730 && value <= 840)
+            else if(value>=730 && value <= 847)
             {
                 return "password";
             }
@@ -162,6 +162,7 @@ namespace GameConsole
                     if(data!=null)
                     {
                         label.Text = $"{detectSyntax(Convert.ToInt32(data))}";
+                        //label.Text = $"{data}";
                         sqlQuerySum[i] = detectSyntax(Convert.ToInt32(data));
                     }
                     else
@@ -198,7 +199,7 @@ namespace GameConsole
                     tmp += $"{sqlQuerySum[i]} ";
                 }
                 textBox1.Text = tmp;
-                string apiUrl = "http://sqcs.tw:8020/s/" + HttpUtility.UrlPathEncode("select * from users");
+                string apiUrl = "http://sqcs.tw:8020/s/" + HttpUtility.UrlPathEncode(tmp);
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(apiUrl);
                 MessageBox.Show(apiUrl);
                 // Set some reasonable limits on resources used by this request
