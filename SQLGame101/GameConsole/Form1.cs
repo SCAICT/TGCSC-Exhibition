@@ -191,6 +191,7 @@ namespace GameConsole
         {
             try
             {
+                dataGridView1.DataSource = new DataTable();
                 string tmp = "";
                 for (int i = 0; i < 8; i++)
                 {
@@ -207,17 +208,39 @@ namespace GameConsole
                 request.Credentials = CredentialCache.DefaultCredentials;
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
-                MessageBox.Show("Content length is {0}", response.ContentLength.ToString());
-                MessageBox.Show("Content type is {0}", response.ContentType);
-
                 // Get the stream associated with the response.
                 Stream receiveStream = response.GetResponseStream();
-
-                // Pipes the stream to a higher level stream reader with the required encoding format.
                 StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
 
+                
+                
+                if (response.StatusCode != HttpStatusCode.OK)
+                {
+                    MessageBox.Show("Sql Syntax Error!!!!!!!!");
+                    return;
+                }
                 MessageBox.Show("Response stream received.");
-                MessageBox.Show(readStream.ReadToEnd());
+                String responseString = readStream.ReadToEnd();
+
+                using (DataTable table = new DataTable())
+                {
+                    table.Columns.Add("ID", typeof(String));
+                    table.Columns.Add("UserName", typeof(String));
+                    table.Columns.Add("Password", typeof(String));
+                    table.Columns.Add("CreditNumber", typeof(String));
+
+
+                    foreach(String row in responseString.Split('\n'))
+                    {
+                        String[] units = row.Split(',');
+                        if (units.Length == 4)
+                        {
+                            table.Rows.Add(units[0], units[1], units[2], units[3]);
+                        }
+                        
+                    }
+                    dataGridView1.DataSource = table;
+                }
                 response.Close();
                 readStream.Close();
             }
