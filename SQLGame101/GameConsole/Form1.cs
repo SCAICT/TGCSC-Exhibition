@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 using System.Management;
 using System.Windows.Forms;
 using System.IO.Ports;
-
+using System.Net;
+using System.IO;
+using System.Web;
 
 namespace GameConsole
 {
@@ -193,6 +195,29 @@ namespace GameConsole
                 tmp += $"{sqlQuerySum[i]} ";
             }
             textBox1.Text = tmp;
+            string apiUrl = "http://sqcs.tw:8020/s/" + HttpUtility.UrlPathEncode("select * from users");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(apiUrl);
+            MessageBox.Show(apiUrl);
+            // Set some reasonable limits on resources used by this request
+            request.MaximumAutomaticRedirections = 4;
+            request.MaximumResponseHeadersLength = 4;
+            // Set credentials to use for this request.
+            request.Credentials = CredentialCache.DefaultCredentials;
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            MessageBox.Show("Content length is {0}", response.ContentLength.ToString());
+            MessageBox.Show("Content type is {0}", response.ContentType);
+
+            // Get the stream associated with the response.
+            Stream receiveStream = response.GetResponseStream();
+
+            // Pipes the stream to a higher level stream reader with the required encoding format.
+            StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
+
+            MessageBox.Show("Response stream received.");
+            MessageBox.Show(readStream.ReadToEnd());
+            response.Close();
+            readStream.Close();
         }
     }
 }

@@ -1,0 +1,53 @@
+        private void btn_WebApi_Click(object sender, EventArgs e)
+        {
+            LB_Result.Text = "";
+            LB_Result2.Text = "---";
+            try
+            {
+                String SIP = TB_ServerIP.Text.Trim();
+                Int32 SPort = Convert.ToInt32(TB_ServcerPort.Text.Trim());
+                TcpClient myClient = new TcpClient(SIP, SPort);
+                myClient.ReceiveTimeout = 5000;
+                myClient.SendTimeout = 5000;
+                NetworkStream networkStream = myClient.GetStream();
+                if (networkStream.CanWrite)
+                {
+                    foreach(string ite in ib_send.Lines)
+                    {
+                        Byte[] SendBuffer = Encoding.UTF8.GetBytes(ib_send.Text); //將要傳送的文字放入SendBuffer陣列內
+                        networkStream.Write(SendBuffer, 0, SendBuffer.Length);
+                    }
+
+                    if (networkStream.CanRead)
+                    {
+                        LB_Result2.Text = "";
+                        int count = 0, buffersize = 8192, ReadBytes = 0;
+                        while (true)
+                        {
+                            Byte[] ReadBuffer = new byte[buffersize];
+                            ReadBytes = networkStream.Read(ReadBuffer,0, buffersize);
+                            LB_Result2.Text += Encoding.UTF8.GetString(ReadBuffer);
+                            if(ReadBytes != buffersize) break;
+                            count++;
+                        }
+                        LB_Result2.Text += "次數=" + count.ToString() + "最後餘數=" + ReadBytes.ToString();
+                    }
+                    else
+                    {
+                        LB_Result.Text = "沒有資料可讀";
+                    }
+                }
+                else
+                {
+                    LB_Result.Text = "無法讀寫";
+                }
+                myClient.GetStream().Close();
+                myClient.Close();
+                myClient.Dispose();
+                myClient = null;
+            }
+            catch
+            {
+                LB_Result.Text = "連線失敗";
+            }
+        }
