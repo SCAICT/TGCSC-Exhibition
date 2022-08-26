@@ -238,6 +238,10 @@ namespace GameConsole
                         {
                             table.Rows.Add(units[0], units[1], units[2], units[3]);
                         }
+                        else
+                        {
+                            table.Rows.Add(row);
+                        }
                         
                     }
                     dataGridView1.DataSource = table;
