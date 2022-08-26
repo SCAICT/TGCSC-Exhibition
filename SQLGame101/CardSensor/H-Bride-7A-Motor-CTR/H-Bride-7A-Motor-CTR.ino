@@ -33,8 +33,8 @@ void setup() {
 }
 
 void loop() {
- Motor1_Forward(30);
- Motor2_Forward(30);
+ Motor1_Forward(100);
+ Motor2_Forward(100);
 // Motor1_Brake();
 // Motor2_Brake();
 // delay(100);
