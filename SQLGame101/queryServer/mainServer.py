@@ -23,7 +23,7 @@ def query(visitPath):
         cursor.execute(f"{sqlquery}")
         result = cursor.fetchall()
         for i in result:
-            cont+=f"{i[0]},{i[1]},{i[2]},{i[3]}\n"
+            cont+=f"{','.join(i)}\n"
         db.close()
         return cont
     except:
