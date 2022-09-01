@@ -3,7 +3,7 @@
 ## Project Tree
 
 - GameConsole
-    - 與會眾互動的程式
+    - 與會眾互動的程式，接收來自CardSensor的Serial資料
     - C# Windows Form
 - queryServer
     - 處理GameConsole之SQL查詢請求，並回傳資料
