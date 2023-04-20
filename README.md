@@ -16,4 +16,4 @@
     - 採3D列印裝置，Clang Arduino
 
 ## Project Result
-![image](https://user-images.githubusercontent.com/23000177/233271546-7694e98f-2a13-4f83-9cd2-d651740e4c84.png)
+![image](https://user-images.githubusercontent.com/23000177/233271650-8f184642-875f-4ee8-808a-fa3c21c1a7b8.png)
